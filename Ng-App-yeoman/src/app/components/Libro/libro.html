@@ -1,0 +1,45 @@
+<section>
+	<h1>Libros</h1>
+	<div class= "table-responsive"> 
+		<table class="table table-bordered table-hover" style="width: 80%; margin-left: 0%;">
+			
+			<tbody>
+				<tr class="success" ng-repeat="libro in vm.libros">
+					<td>
+						<div class= "row">
+							 <div class="col-sm-4">
+							 	<a s><img src="#" class="img-rounded" alt="Cinque Terre" width="304" height="236"></a>
+
+							 </div>
+							
+							<div class="col-sm-4">
+								<ul class="list-group">
+								  <li class="list-group-item">Titulo</li>
+								  <li class="list-group-item">Año</li>
+								  <li class="list-group-item">Autor</li>
+								  <li class="list-group-item">Genero</li>
+								</ul>
+							</div>
+								
+
+							<div class="col-sm-4">
+								
+								<ul class="list-group">
+								  <li class="list-group-item">{{ libro.titulo}}</li>
+								  <li class="list-group-item">{{libro.anno}}</li>
+								  <li class="list-group-item">{{libro.autor.nombre}}</li>
+								  <li class="list-group-item">{{libro.genero.descripcion}}</li>
+								</ul>
+							</div>
+							
+						</div>
+						<br><br><br>
+
+					</td>
+			
+				
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</section>

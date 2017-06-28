@@ -1,0 +1,31 @@
+<section>
+	<h1>Prestamos de Libros</h1>
+	<div class= "table-responsive"> 
+		<table class="table table-bordered table-hover" style="width: 80%; margin-left: 0%;">
+			<thead>
+				<tr class="danger">
+					<th>Libro</th>
+					<th>Usuario</th>
+					<th>Fecha Devolucion</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="success" ng-repeat="prestamo in vm.prestamos">
+					<td>{{ prestamo.libro.titulo }}</td>
+					<td>{{ prestamo.usuario.nombre }}</td>
+					<td>{{ prestamo.fecha_devolucion }}</td>
+					<td>
+						<a ui-sref="verPrestamo({id: prestamo.id})"><span class="glyphicon glyphicon-search"></span> </a>
+					
+					</td>
+					<td>
+						<a ui-sref="actualizarPrestamo({id: prestamo.id})"><span class="glyphicon glyphicon-pencil"></span> </a>
+					
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</section>

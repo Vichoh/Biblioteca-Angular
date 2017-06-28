@@ -1,0 +1,116 @@
+<form ng-submit="vm.semanticAction(vm.prestamoForm)">
+	<legend ng-if="vm.location === 'guardar'">Generar Prestamo</legend>
+	<legend ng-if="vm.location === 'ver'">Detalle</legend>
+	<legend ng-if="vm.location === 'actualizar'">Actualizar Prestamo</legend>
+	<legend ng-if="vm.location === 'eliminar'">Devolver Libro </legend>
+
+	
+	<div class="form-group" ng-if="vm.location === 'ver'">
+		<label>Fecha Prestamo   :       </label>
+		<label>{{vm.prestamoForm.fecha_prestamo}}</label><br>
+		<label>Fecha Devolucion :       </label>
+		<label>{{vm.prestamoForm.fecha_devolucion}}</label>
+		<div class="container">
+		  <h2>Libro</h2>
+
+		  <table class="table">
+		    <tbody>     
+		      <tr class="active">
+		        <td>Titulo:</td>
+		        <td>{{vm.prestamoForm.libro.titulo}}</td>
+		        
+		      </tr>
+		      <tr class="active">
+		        <td>Año:</td>
+		        <td>{{vm.prestamoForm.libro.anno}}</td>
+		        
+		      </tr>
+		      <tr class="active">
+		        <td>Autor:</td>
+		        <td>{{vm.prestamoForm.libro.autor.nombre}}</td>
+		        
+		      </tr>
+		      <tr class="active">
+		        <td>Genero</td>
+		        <td>{{vm.prestamoForm.libro.genero.descripcion}}</td>
+		        
+		      </tr>
+		      
+		    </tbody>
+		  </table>
+		</div>
+		<div class="container">
+		  <h2>Usuario</h2>
+
+		  <table class="table">
+		    <tbody>     
+		      <tr class="info">
+		        <td>nombre:</td>
+		        <td>{{vm.prestamoForm.usuario.nombre}}</td>
+		        
+		      </tr>
+		      <tr class="info">
+		        <td>Apellido:</td>
+		        <td>{{vm.prestamoForm.usuario.apellido}}</td>
+		        
+		      </tr>
+		      <tr class="info">
+		        <td>Rut:</td>
+		        <td>{{vm.prestamoForm.usuario.rut}}</td>
+		        
+		      </tr>
+		      <tr class="info">
+		        <td>Telefono</td>
+		        <td>{{vm.prestamoForm.usuario.telefono}}</td>
+		        
+		      </tr>
+		      
+		    </tbody>
+		  </table>
+		</div>
+	</div>
+
+
+
+
+
+
+	<div class="form-group" ng-if="vm.location === 'guardar' || vm.location === 'actualizar' "
+	>
+		<label>Libro</label>
+		<select ng-model="vm.prestamoForm.libro_id" class="form-control" ng-options="libro as libro.titulo for libro in vm.libros " ></select>
+	</div>
+	<div class="form-group" ng-if=" vm.location === 'eliminar'"
+	>
+		<label>Libro</label>
+		<select ng-model="vm.prestamoForm.id" class="form-control" ng-options="libro as libro.libro.titulo for libro in vm.prestamos" ></select>
+	</div>
+
+	<div class="form-group" ng-if="vm.location === 'guardar' || vm.location === 'actualizar'">
+		<label>Usuario</label>
+		<select ng-model="vm.prestamoForm.usuario_id" class="form-control" ng-options="usuario as usuario.nombre for usuario in vm.usuarios"></select>
+	</div>
+	<div class="form-group" ng-if="vm.location === 'guardar' || vm.location === 'actualizar'">
+		<label>Fecha Prestamo</label>
+		<input ng-model="vm.prestamoForm.fecha_prestamo" type="date" class="form-control" 
+		value="{{vm.prestamoForm.fecha_prestamo}}">
+	</div>
+	<div class="form-group">
+		
+		<input ng-model="vm.prestamoForm.fecha_prestamo" type="hidden" class="form-control">
+	</div>
+	<div class="form-group" ng-if="vm.location === 'guardar' || vm.location === 'actualizar'">
+		<label>Fecha Devolucion</label>
+		<input ng-model="vm.prestamoForm.fecha_devolucion" type="date" class="form-control">
+	</div>
+	<div class="form-group">
+	
+		<input ng-model="vm.prestamoForm.fecha_devolucion" type="hidden" class="form-control">
+	</div>
+	
+	<a ui-sref="prestamo" class="btn btn-default" ng-if="vm.location === 'eliminar'">Volver</a>
+	<button ng-if="vm.location === 'eliminar'" type="submit" class="btn btn-danger">Eliminar</button>
+	<button ng-if="vm.location === 'guardar'" type="submit" class="btn btn-success" >Guardar</button>
+	<button ng-if="vm.location === 'actualizar'" type="submit" class="btn btn-danger">Actualizar</button>
+	<br><br><br>
+</form>
